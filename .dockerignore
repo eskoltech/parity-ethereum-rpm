@@ -1,5 +1,7 @@
 .bash_history
 .git/
 .gitignore
+.rpmmacros
 Dockerfile
 Makefile
+rpmbuild/
