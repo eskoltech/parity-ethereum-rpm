@@ -1,13 +1,13 @@
-Name:    parity
-Version: 2.1.10
-Release: 0
-Summary: The fast, light, and robust EVM and WASM client.
+Name:          parity
+Version:       2.1.10
+Release:       0%{?dist}
+Summary:       The fast, light, and robust EVM and WASM client.
 
-Group:     TecAdmin
-BuildArch: x64
-License:   GPLv3
-URL:       https://github.com/paritytech/parity-ethereum
-Source0:   %{name}-%{version}.tar.gz
+Group:         TecAdmin
+ExclusiveArch: x86_64
+License:       GPLv3
+URL:           https://github.com/paritytech/parity-ethereum
+Source0:       %{name}-%{version}.tar.gz
 
 %description
 Parity Ethereum's goal is to be the fastest, lightest, and most secure Ethereum client. 
