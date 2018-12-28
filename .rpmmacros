@@ -1,4 +1,6 @@
 
+%_lib lib
+
 %_topdir %(echo $HOME)/rpmbuild
 
 %_smp_mflags %( \
