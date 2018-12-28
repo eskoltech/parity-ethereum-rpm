@@ -8,6 +8,7 @@ ExclusiveArch: x86_64
 License:       GPLv3
 URL:           https://github.com/paritytech/parity-ethereum
 Source0:       %{name}-%{version}.tar.gz
+AutoReq:       no
 
 %description
 Parity Ethereum's goal is to be the fastest, lightest, and most secure Ethereum client. 
