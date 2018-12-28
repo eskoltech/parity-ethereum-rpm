@@ -27,10 +27,13 @@ build:
 shell:
 	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION)
 
-rpm-parity:
+rpm-parity-tar:
 	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION) \
 	rm -rf $(sources_dir)/*.tar.gz && \
-	tar czf $(sources_dir)/parity-$(PARITY_VERSION).tar.gz $(sources_dir)/parity-$(PARITY_VERSION) && \
+	tar czf $(sources_dir)/parity-$(PARITY_VERSION).tar.gz -C $(sources_dir) parity-$(PARITY_VERSION)
+
+rpm-parity: rpm-parity-tar
+	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION) \
 	rpmbuild -ba $(spec_dir)/parity.spec
 
 lint:

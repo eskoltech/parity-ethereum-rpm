@@ -1,4 +1,3 @@
-%packager eskol
 
 %_topdir %(echo $HOME)/rpmbuild
 

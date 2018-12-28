@@ -19,11 +19,10 @@ needs.
 %setup -q
 
 %build
-%configure
 
 %install
 install -m 0755 -d $RPM_BUILD_ROOT/.local/parity
-install -m 0644 parity-config.toml $RPM_BUILD_ROOT/.local/parity/config.toml
+install -m 0644 config.toml $RPM_BUILD_ROOT/.local/parity/config.toml
 install -m 0755 parity $RPM_BUILD_ROOT/usr/local/bin/parity
 
 %files
