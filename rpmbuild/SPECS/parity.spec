@@ -21,14 +21,16 @@ needs.
 %build
 
 %install
-install -m 0755 -d $RPM_BUILD_ROOT/.local/parity
-install -m 0644 config.toml $RPM_BUILD_ROOT/.local/parity/config.toml
-install -m 0755 parity $RPM_BUILD_ROOT/usr/local/bin/parity
+install -m 0755 -d $RPM_BUILD_ROOT/var/parity
+install -m 0755 -d $RPM_BUILD_ROOT/%{_sbindir}
+
+install -m 0644 config.toml $RPM_BUILD_ROOT/var/parity/config.toml
+install -m 0755 parity $RPM_BUILD_ROOT/%{_sbindir}/parity
 
 %files
-~/.local/parity
-~/.local/parity/config.toml
-/usr/local/bin/parity
+/var/parity
+/var/parity/config.toml
+%{_sbindir}/%{name}
 
 %changelog
 * Fri Dec 28 2018 Javier Casanova <nhitbh@gmail.com>
