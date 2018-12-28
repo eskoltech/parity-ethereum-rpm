@@ -6,10 +6,12 @@
 #
 
 base_version = 0.1.0
+sources_dir = rpmbuild/SOURCES
 
 # This variables can be overriden
 VERSION ?= $(base_version)-$(shell git rev-parse --short=7 HEAD)
 CURRENT_DIR ?= $$PWD
+PARITY_VERSION ?= 2.1.10
 
 #   _____                    _
 #  |_   _|_ _ _ __ __ _  ___| |_ ___
@@ -23,3 +25,8 @@ build:
 
 shell:
 	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION)
+
+rpm-parity:
+	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION) \
+	rm -rf $(sources_dir)/*.tar.gz && \
+	tar czf $(sources_dir)/parity-$(PARITY_VERSION).tar.gz $(sources_dir)/parity-$(PARITY_VERSION)

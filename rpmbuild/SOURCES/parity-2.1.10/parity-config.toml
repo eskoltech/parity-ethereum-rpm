@@ -1,0 +1,7 @@
+[parity]
+# Ropsten Test Network
+chain = "ropsten"
+
+[network]
+# Parity will maintain at most 150 peers.
+max_peers = 150
