@@ -6,8 +6,10 @@
 #
 
 base_version = 0.1.0
-# This variable can be overriden
+
+# This variables can be overriden
 VERSION ?= $(base_version)-$(shell git rev-parse --short=7 HEAD)
+CURRENT_DIR ?= $$PWD
 
 #   _____                    _
 #  |_   _|_ _ _ __ __ _  ___| |_ ___
@@ -18,3 +20,6 @@ VERSION ?= $(base_version)-$(shell git rev-parse --short=7 HEAD)
 
 build:
 	docker build -t rpmbuilder:$(VERSION) .
+
+shell:
+	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION)
