@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 # run as root, set base_path in config.toml
-ExecStart=parity --config /var/parity/config.toml
+ExecStart=/usr/sbin/parity --config /var/parity/config.toml
 Restart=on-failure
 
 # Specifies which signal to use when killing a service. Defaults to SIGTERM.
