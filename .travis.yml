@@ -1,0 +1,27 @@
+language: minimal
+
+git:
+  depth: 3
+  submodules: false
+
+services:
+  - docker
+
+before_install:
+  - make build
+
+script:
+  - make rpm-parity
+
+# Required by docker containers
+sudo: required
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key: $GH_TOKEN
+  draft: true
+  file_glob: true
+  file: rpmbuild/RPMS/x86_64/*
+  on:
+    tags: true
