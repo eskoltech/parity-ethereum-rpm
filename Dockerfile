@@ -4,4 +4,7 @@ ARG parity_version
 ENV PARITY_VERSION=${parity_version}
 
 RUN yum update -y && yum install -y rpm-build rpmdevtools rpmlint
-WORKDIR /root
+RUN useradd -ms /bin/bash rpmuser
+USER rpmuser
+
+WORKDIR /home/rpmuser
