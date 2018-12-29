@@ -33,15 +33,15 @@ shell:
 
 rpm-parity-tar:
 	docker run -it -v $(CURRENT_DIR):$(volume) \
-	--user $(shell id -u):$(shell id -g) rpmbuilder:$(VERSION) \
+	--user 2000:2000 rpmbuilder:$(VERSION) \
 	bash -c /opt/tar.sh
 
 rpm-parity: rpm-parity-tar
 	docker run -it -v $(CURRENT_DIR):$(volume) \
-	--user $(shell id -u):$(shell id -g) rpmbuilder:$(VERSION) \
+	--user 2000:2000 rpmbuilder:$(VERSION) \
 	bash -c /opt/rpm.sh
 
 lint:
 	docker run -it -v $(CURRENT_DIR):$(volume) \
-	--user $(shell id -u):$(shell id -g) rpmbuilder:$(VERSION) \
+	--user 2000:2000 rpmbuilder:$(VERSION) \
 	rpmlint $(spec_dir)/parity.spec
