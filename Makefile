@@ -22,16 +22,15 @@ PARITY_VERSION ?= 2.1.10
 #                 |___/
 
 build:
-	docker build -t rpmbuilder:$(VERSION) .
+	docker build --build-arg parity_version=$(PARITY_VERSION) \
+	-t rpmbuilder:$(VERSION) .
 
 shell:
 	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION)
 
 rpm-parity-tar:
 	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION) \
-	rm -rf $(sources_dir)/*.tar.gz && \
-	tar czf $(sources_dir)/parity-$(PARITY_VERSION).tar.gz -C $(sources_dir) parity-$(PARITY_VERSION) && \
-	chown -R $(shell id -u):$(shell id -g) $(sources_dir)/parity-$(PARITY_VERSION).tar.gz
+	bash -c /root/scripts/tar.sh
 
 rpm-parity: rpm-parity-tar
 	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION) \
