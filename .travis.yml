@@ -1,0 +1,17 @@
+language: minimal
+
+git:
+  depth: 3
+  submodules: false
+
+services:
+  - docker
+
+before_install:
+  - make build
+
+script:
+  - make rpm-parity
+
+# Required by docker containers
+sudo: true
