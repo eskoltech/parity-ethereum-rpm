@@ -8,7 +8,7 @@
 base_version = 0.1.0
 sources_dir = rpmbuild/SOURCES
 spec_dir = rpmbuild/SPECS
-volume = /home/rpmuser
+volume = /root
 
 # This variables can be overriden
 VERSION ?= $(base_version)-$(shell git rev-parse --short=7 HEAD)
@@ -33,15 +33,15 @@ shell:
 
 rpm-parity-tar:
 	docker run -it -v $(CURRENT_DIR):$(volume) \
-	--user 2000:2000 rpmbuilder:$(VERSION) \
+	--user root:root rpmbuilder:$(VERSION) \
 	bash -c /opt/tar.sh
 
 rpm-parity: rpm-parity-tar
 	docker run -it -v $(CURRENT_DIR):$(volume) \
-	--user 2000:2000 rpmbuilder:$(VERSION) \
+	--user root:root rpmbuilder:$(VERSION) \
 	bash -c /opt/rpm.sh
 
 lint:
 	docker run -it -v $(CURRENT_DIR):$(volume) \
-	--user 2000:2000 rpmbuilder:$(VERSION) \
+	--user root:root rpmbuilder:$(VERSION) \
 	rpmlint $(spec_dir)/parity.spec

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export HOME=/home/rpmuser
+export HOME=/root
 sources_dir=$HOME/rpmbuild/SOURCES
 spec_dir=$HOME/rpmbuild/SPECS
 
