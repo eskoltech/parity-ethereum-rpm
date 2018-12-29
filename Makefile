@@ -31,11 +31,11 @@ shell:
 
 rpm-parity-tar:
 	docker run -it -v $(CURRENT_DIR):$(volume) rpmbuilder:$(VERSION) \
-	bash -c $(volume)/scripts/tar.sh
+	chmod +x $(volume)/scripts/tar.sh && bash -c $(volume)/scripts/tar.sh
 
 rpm-parity: rpm-parity-tar
 	docker run -it -v $(CURRENT_DIR):$(volume) rpmbuilder:$(VERSION) \
-	bash -c $(volume)/scripts/rpm.sh
+	chmod +x $(volume)/scripts/rpm.sh && bash -c $(volume)/scripts/rpm.sh
 
 lint:
 	docker run -it -v $(CURRENT_DIR):$(volume) rpmbuilder:$(VERSION) \
