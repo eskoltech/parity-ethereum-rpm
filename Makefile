@@ -34,8 +34,7 @@ rpm-parity-tar:
 
 rpm-parity: rpm-parity-tar
 	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION) \
-	rpmbuild -ba $(spec_dir)/parity.spec && \
-	rm -rf $(sources_dir)/*.tar.gz
+	bash -c /root/scripts/rpm.sh
 
 lint:
 	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION) \
