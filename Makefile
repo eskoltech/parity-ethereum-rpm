@@ -30,7 +30,8 @@ shell:
 rpm-parity-tar:
 	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION) \
 	rm -rf $(sources_dir)/*.tar.gz && \
-	tar czf $(sources_dir)/parity-$(PARITY_VERSION).tar.gz -C $(sources_dir) parity-$(PARITY_VERSION)
+	tar czf $(sources_dir)/parity-$(PARITY_VERSION).tar.gz -C $(sources_dir) parity-$(PARITY_VERSION) && \
+	chown -R $(shell id -u):$(shell id -g) $(sources_dir)/parity-$(PARITY_VERSION).tar.gz
 
 rpm-parity: rpm-parity-tar
 	docker run -it -v $(CURRENT_DIR):/root rpmbuilder:$(VERSION) \
