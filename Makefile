@@ -27,16 +27,21 @@ build:
 	-t rpmbuilder:$(VERSION) .
 
 shell:
-	docker run -it -v $(CURRENT_DIR):/$(volume) rpmbuilder:$(VERSION)
+	docker run -it -v $(CURRENT_DIR):/$(volume) \
+	--user $(shell id -u):$(shell id -g) \
+	rpmbuilder:$(VERSION)
 
 rpm-parity-tar:
-	docker run -it -v $(CURRENT_DIR):$(volume) rpmbuilder:$(VERSION) \
-	bash -c $(volume)/scripts/tar.sh
+	docker run -it -v $(CURRENT_DIR):$(volume) \
+	--user $(shell id -u):$(shell id -g) rpmbuilder:$(VERSION) \
+	bash -c /opt/tar.sh
 
 rpm-parity: rpm-parity-tar
-	docker run -it -v $(CURRENT_DIR):$(volume) rpmbuilder:$(VERSION) \
-	bash -c $(volume)/scripts/rpm.sh
+	docker run -it -v $(CURRENT_DIR):$(volume) \
+	--user $(shell id -u):$(shell id -g) rpmbuilder:$(VERSION) \
+	bash -c /opt/rpm.sh
 
 lint:
-	docker run -it -v $(CURRENT_DIR):$(volume) rpmbuilder:$(VERSION) \
+	docker run -it -v $(CURRENT_DIR):$(volume) \
+	--user $(shell id -u):$(shell id -g) rpmbuilder:$(VERSION) \
 	rpmlint $(spec_dir)/parity.spec
