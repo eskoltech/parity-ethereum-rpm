@@ -16,6 +16,7 @@ script:
 # Required by docker containers
 sudo: required
 
+before_deploy: ls -la
 deploy:
   provider: releases
   skip_cleanup: true
