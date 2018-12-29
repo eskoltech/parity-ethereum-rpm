@@ -18,8 +18,8 @@ sudo: required
 
 deploy:
   provider: releases
-  skip-cleanup: true
-  github-token: $GH_TOKEN
+  skip_cleanup: true
+  api_key: $GH_TOKEN
   draft: true
   file_glob: true
   file: rpmbuild/RPMS/*.rpm
