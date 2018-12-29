@@ -16,7 +16,8 @@ script:
 # Required by docker containers
 sudo: required
 
-before_deploy: ls -la
+# Need to change permissions to upload files successfully
+before_deploy: sudo chown -R travis:travis rpmbuild
 deploy:
   provider: releases
   skip_cleanup: true
