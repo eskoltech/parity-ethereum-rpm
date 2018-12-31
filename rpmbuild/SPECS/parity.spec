@@ -1,6 +1,6 @@
 Name:          parity
 Version:       2.1.10
-Release:       0%{?dist}
+Release:       1%{?dist}
 Summary:       The fast, light, and robust EVM and WASM client.
 
 Group:         TecAdmin
@@ -31,7 +31,7 @@ install -m 0755 parity $RPM_BUILD_ROOT/%{_sbindir}/parity
 install -m 0644 parity.service $RPM_BUILD_ROOT/%{_prefix}/%{_lib}/systemd/system/parity.service
 
 %files
-/var/parity/config.toml
+%config(noreplace) /var/parity/config.toml
 %{_prefix}/%{_lib}/systemd/system/parity.service
 %{_sbindir}/%{name}
 
