@@ -7,7 +7,7 @@ Build an RPM package for the Parity Ethereum latest stable client. This RPM pack
 If you want to install the latest Parity Ethereum stable release, you can use the next one line command:
 
 ```bash
-rpm -i https://github.com/eskoltech/parity-ethereum-rpm/releases/download/v0.1.0/parity-2.1.10-0.el7.x86_64.rpm
+rpm -i https://github.com/eskoltech/parity-ethereum-rpm/releases/download/v0.1.1/parity-2.1.10-1.el7.x86_64.rpm
 ```
 
 Note that this command will install `parity` inside the `/usr/sbin` directory, and two configuration files will be created:
