@@ -11,6 +11,7 @@ before_install:
   - make build
 
 script:
+  - make lint
   - make rpm-parity
 
 # Required by docker containers

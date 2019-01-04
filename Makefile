@@ -44,4 +44,4 @@ rpm-parity: rpm-parity-tar
 lint:
 	docker run -it -v $(CURRENT_DIR):$(volume) \
 	--user root:root rpmbuilder:$(VERSION) \
-	rpmlint $(spec_dir)/parity.spec
+	bash -c /opt/lint.sh
